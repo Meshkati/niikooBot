@@ -1,6 +1,6 @@
 """
     This module provides all of the stuffs about `unpaid_handler` list
-    It goes through all of the transactions and shows the paid that are still
+    It goes through all of the user transactions and shows the payments that are still
     unpaid, so the user can pay the debts
 """
 from telegram.ext import ConversationHandler, RegexHandler, MessageHandler, Filters
@@ -11,7 +11,7 @@ from constants.messages import BotMessages as bm
 GET_ITEM = range(2)
 
 
-# This method generates the while stuffs about unpaid_handler
+# This method generates the whole stuffs about unpaid_handler
 def generate_unpaid_handler():
     return ConversationHandler(
         entry_points=[RegexHandler("(" + btm.unpaid_debts + ")$", unpaid_handler_entry)],
@@ -23,7 +23,7 @@ def generate_unpaid_handler():
     )
 
 
-# The entry pint of this handler, it shoes
+# The entry point of this handler, it shows the list of items
 def unpaid_handler_entry(bot, update):
     user = update.message.from_user
     unpaid_list = fetch_unpaid_list(user)
@@ -39,7 +39,7 @@ def unpaid_handler_entry(bot, update):
     return GET_ITEM
 
 
-# Gets the list from DB
+# Gets the list of unpaid items from DB
 def fetch_unpaid_list(user):
     # TODO: Implement it
     return [
