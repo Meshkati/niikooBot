@@ -5,3 +5,4 @@ class ButtonMessages:
     new_debt = "درخواست قرض"
     unpaid_debts = "لیست قروض پرداخت نشده"
     paid_debts = "لیست قروض پرداخت شده"
+    help = "راهنما"
