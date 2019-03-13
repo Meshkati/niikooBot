@@ -8,6 +8,7 @@ import logging
 from handlers.menu_handler import *
 from handlers.get_code_handler import *
 from handlers.add_code_handler import *
+from handlers.display_credit_handler import *
 
 # Config logger
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.DEBUG)
@@ -26,6 +27,7 @@ def main():
     dp.add_handler(generate_menu_handler())
     dp.add_handler(generate_get_code_handler())
     dp.add_handler(generate_add_code_handler())
+    dp.add_handler(generate_display_credit_handler())
     # Starting the bot
     updater.start_polling(poll_interval=2)
     # For terminating the bot
