@@ -12,6 +12,7 @@ from handlers.display_credit_handler import *
 from handlers.unknown_command_handler import *
 from handlers.unpaid_handler import *
 from handlers.paid_handler import *
+from handlers.help_handler import *
 
 # Config logger
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.DEBUG)
@@ -33,6 +34,7 @@ def main():
     dp.add_handler(generate_display_credit_handler())
     dp.add_handler(generate_unpaid_handler())
     dp.add_handler(generate_paid_handler())
+    dp.add_handler(generate_help_handler())
     # unknown handler, it should be the last handler
     dp.add_handler(generate_unknown_handler())
     # Starting the bot
