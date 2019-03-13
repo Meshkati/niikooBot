@@ -3,7 +3,7 @@
     It goes through all of the transactions and shows the paid that are still
     unpaid, so the user can pay the debts
 """
-from telegram.ext import ConversationHandler, RegexHandler
+from telegram.ext import ConversationHandler, RegexHandler, MessageHandler, Filters
 from constants.button_messages import ButtonMessages as btm
 from constants.messages import BotMessages as bm
 
@@ -16,7 +16,7 @@ def generate_unpaid_handler():
     return ConversationHandler(
         entry_points=[RegexHandler("(" + btm.unpaid_debts + ")$", unpaid_handler_entry)],
         states={
-            GET_ITEM: []
+            GET_ITEM: [MessageHandler(Filters.text, get_item)]
         },
         # TODO: Create fallback
         fallbacks=[]
@@ -47,3 +47,9 @@ def fetch_unpaid_list(user):
         ["Transaction 2", 1300, 1000],
         ["Transaction 3", 2400, 1800]
     ]
+
+
+# Gets an item
+def get_item(bot, update):
+    # TODO: Check the database
+    return ConversationHandler.END
