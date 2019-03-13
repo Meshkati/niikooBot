@@ -8,3 +8,4 @@ class BotMessages:
     enter_code_failed = "مشکلی در اضافه‌شدن پیش‌آمده است.\n"
     display_credit_message = "شما به مقدار زیر امتیاز دارید:\n"
     credit_info_message = "هر امتیاز برابر با ۱۰۰۰ تومان اعتبار است.\n"
+    unknown_command_message = "دستور وارد شده معتبر نمی‌باشد\n"
