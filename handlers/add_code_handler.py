@@ -1,5 +1,5 @@
 """
-    This module provides all o the stuffs about `add_code_handler`
+    This module provides all of the stuffs about `add_code_handler`
     By this part, the user can add other users code and joins to their
     network for request debts or provide loan
 """
