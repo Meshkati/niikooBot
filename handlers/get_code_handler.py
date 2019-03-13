@@ -1,7 +1,7 @@
 """
     This module provides all of the stuffs about `get_code_handler`
 """
-from telegram.ext import MessageHandler, Filters, ConversationHandler, RegexHandler
+from telegram.ext import ConversationHandler, RegexHandler
 from constants.button_messages import ButtonMessages as btm
 from constants.messages import BotMessages as bm
 import random
@@ -37,6 +37,7 @@ def get_code_or_generate(bot, update):
 def generate_code():
     # TODO: Generate a unique string
     # TODO: Put the range in config file
+    # TODO: Persist the code
     return ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(32))
 
 
