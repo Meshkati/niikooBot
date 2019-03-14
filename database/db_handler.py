@@ -36,3 +36,19 @@ def get_code(user):
         return None
 
     return result["code"]
+
+
+# Insert the code of a user into another user
+def add_code(user, code):
+    users = get_collection("users")
+    found_user = users.find_one({"code": code})
+    if found_user is None:
+        return None
+
+    result = users.update_one({"user_id": user.id}, {"$push": {"network": found_user["user_id"]}})
+    if result is None:
+        return None
+    # FIXME: Move this part into the logic of add_code_handler
+    result = users.update_one({"user_id": found_user["user_id"]}, {"$push": {"network": user.id}})
+
+    return result
