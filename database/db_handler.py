@@ -77,3 +77,15 @@ def get_credit(user_id):
         return 0
 
     return user["credit"]
+
+
+# Place a debt
+def insert_debt(user_id, amount):
+    debts = get_collection("debts")
+    result = debts.insert_one({
+        "user_id": user_id,
+        "amount": amount,
+        "pays": []
+    })
+
+    return result.inserted_id
