@@ -4,6 +4,7 @@
 from telegram.ext import ConversationHandler, RegexHandler
 from constants.button_messages import ButtonMessages as btm
 from constants.messages import BotMessages as bm
+import database.db_handler as db
 import random
 import string
 
@@ -25,23 +26,29 @@ def generate_get_code_handler():
 # Checks if the user has already registered or not
 # to return the appropriate invite code
 def get_code_or_generate(bot, update):
-    code = get_code()
+    user = update.message.from_user
+    code = get_code(user)
     if code is None:
         # There is no code, so we're going to generate one
-        code = generate_code()
+        code = generate_code(user)
 
     update.message.reply_text(bm.get_code_message + "\n" + code)
 
 
 # Generates a unique string as user invite code
-def generate_code():
+def generate_code(user):
     # TODO: Generate a unique string
     # TODO: Put the range in config file
-    # TODO: Persist the code
-    return ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(32))
+    generated_code = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(16))
+    result = db.insert_code(user, generated_code)
+    print(generated_code)
+    print(result)
+    if result:
+        return generated_code
+    else:
+        return None
 
 
 # Checks the DB for the invite code
-def get_code():
-    # TODO: Check the db for the code
-    return None
+def get_code(user):
+    return db.get_code(user)
