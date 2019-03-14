@@ -7,8 +7,11 @@ from constants.button_messages import ButtonMessages as btm
 from constants.messages import BotMessages as bm
 
 # Keyboard buttons
-main_keyboard = [[btm.my_code, btm.friends_code, btm.my_credit, btm.new_debt, btm.unpaid_debts, btm.paid_debts, btm.help]]
+main_keyboard = [
+    [btm.my_code, btm.friends_code, btm.my_credit, btm.new_debt, btm.unpaid_debts, btm.paid_debts, btm.help]]
 
+
+# TODO: Actually we have to generate the invite code here!
 
 # This method generates the whole stuffs about start command
 # like conversation trigger buttons
