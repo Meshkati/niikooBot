@@ -31,6 +31,8 @@ def get_code_or_generate(bot, update):
     if code is None:
         # There is no code, so we're going to generate one
         code = generate_code(user)
+        # Adds the init credit
+        db.add_credit(user.id, 100)
 
     update.message.reply_text(bm.get_code_message + "\n" + code)
 
