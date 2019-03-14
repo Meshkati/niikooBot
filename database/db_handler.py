@@ -67,3 +67,13 @@ def add_credit(user_id, credit):
     result = users.update_one({"user_id": user_id}, {"$set": {"credit": credit + last_credit}})
 
     return result
+
+
+# Gets the credit of a user
+def get_credit(user_id):
+    users = get_collection("users")
+    user = users.find_one({"user_id": user_id})
+    if user is None:
+        return 0
+
+    return user["credit"]
