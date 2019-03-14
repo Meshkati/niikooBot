@@ -9,6 +9,8 @@ mongo_client = pymongo.MongoClient("mongodb://localhost:27017/")
 db_name = "niikoo"
 
 
+# FIXME: Change the users to user_ids
+
 # Creates collections if necessary
 def get_collection(collection_name):
     db = mongo_client[db_name]
@@ -50,5 +52,18 @@ def add_code(user, code):
         return None
     # FIXME: Move this part into the logic of add_code_handler
     result = users.update_one({"user_id": found_user["user_id"]}, {"$push": {"network": user.id}})
+
+    return result
+
+
+# Adds an amount of credit to a user, or if it hasn't any credits yet, initializes it
+def add_credit(user_id, credit):
+    users = get_collection("users")
+    user = users.find_one({"user_id": user_id})
+    last_credit = 0
+    if "credit" in user:
+        last_credit = user["credit"]
+
+    result = users.update_one({"user_id": user_id}, {"$set": {"credit": credit + last_credit}})
 
     return result
