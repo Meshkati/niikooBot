@@ -3,6 +3,7 @@
     There is no other models or something for managing data, everything is here :(
 """
 import pymongo
+from bson.objectid import ObjectId
 
 # Setups the connection
 mongo_client = pymongo.MongoClient("mongodb://localhost:27017/")
@@ -94,7 +95,7 @@ def insert_debt(user_id, amount):
 # Get a debt object by it's id
 def get_debt(debt_id):
     debts = get_collection("debts")
-    debt = debts.find_one(debt_id)
+    debt = debts.find_one({"_id": ObjectId(debt_id)})
 
     return debt
 

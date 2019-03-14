@@ -50,6 +50,7 @@ def get_request_amount(bot, update):
         return ConversationHandler.END
     # User has the required credit, so we place the debt request
     debt_result = place_debt(user.id, requested_amount)
+    print(debt_result)
     notify_friends(bot, user.id, debt_result)
     if debt_result:
         update.message.reply_text(bm.request_debt_succeed)

@@ -26,3 +26,8 @@ class BotMessages:
 
     notify_debt_title_1 = "یکی از دوستانت تقاضای قرض به مبلغ "
     notify_debt_title_2 = " کرده. در صورت تمایل می‌تونی بهش قرض بدی.\n"
+
+    loan_invoice_title = "ارسال پول"
+    loan_invoice_description = "کار خیر شما بی پاداش نخواهد ماند ;)"
+    successful_payment = "پرداخت با موفقیت انجام شد\n"
+    failed_payment = "پرداخت انجام نشد\n"
