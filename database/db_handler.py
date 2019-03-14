@@ -89,3 +89,12 @@ def insert_debt(user_id, amount):
     })
 
     return result.inserted_id
+
+
+# Get a debt object by it's id
+def get_debt(debt_id):
+    debts = get_collection("debts")
+    debt = debts.find_one(debt_id)
+
+    return debt
+
