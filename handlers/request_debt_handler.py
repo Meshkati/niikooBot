@@ -77,6 +77,7 @@ def notify_friends(bot, user_id, debt_id):
     friends = db.get_friend_ids(user_id)
 
     for friend in friends:
+        # TODO: This part is because of the lack of SDK
         bot.send_message(chat_id=friend,
                          text=bm.notify_debt_title_1 + str(debt["amount"]) + bm.notify_debt_title_2,
-                         reply_markup=ReplyKeyboardMarkup([[str(debt["amount"]) + btm.notify_debt]], one_time_keyboard=True))
+                         reply_markup=ReplyKeyboardMarkup([[str(debt_id) + "\n" + btm.notify_debt]], one_time_keyboard=True))
