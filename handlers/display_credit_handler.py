@@ -5,6 +5,7 @@
 from telegram.ext import RegexHandler
 from constants.button_messages import ButtonMessages as btm
 from constants.messages import BotMessages as bm
+import database.db_handler as db
 
 
 # This method generates the whole stuffs about display_credit command
@@ -23,6 +24,5 @@ def display_credit_entry(bot, update):
 
 # This method gets the credit of a user
 # TODO: Move this part to another module
-# TODO: Check from the DB
 def get_credit(user):
-    return 12345
+    return db.get_credit(user.id)
