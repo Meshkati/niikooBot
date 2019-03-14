@@ -79,4 +79,4 @@ def notify_friends(bot, user_id, debt_id):
     for friend in friends:
         bot.send_message(chat_id=friend,
                          text=bm.notify_debt_title_1 + str(debt["amount"]) + bm.notify_debt_title_2,
-                         reply_markup=ReplyKeyboardMarkup(notify_debt_keyboard, one_time_keyboard=True))
+                         reply_markup=ReplyKeyboardMarkup([[str(debt["amount"]) + btm.notify_debt]], one_time_keyboard=True))

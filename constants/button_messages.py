@@ -6,4 +6,4 @@ class ButtonMessages:
     unpaid_debts = "لیست قروض پرداخت نشده"
     paid_debts = "لیست قروض پرداخت شده"
     help = "راهنما"
-    notify_debt = "قرض می‌هم"
+    notify_debt = " تومان قرض می‌هم"
