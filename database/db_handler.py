@@ -98,3 +98,13 @@ def get_debt(debt_id):
 
     return debt
 
+
+# Gets all the people in the network of a user
+def get_friend_ids(user_id):
+    users = get_collection("users")
+    user = users.find_one({"user_id": user_id})
+    if "network" not in user:
+        return []
+    friends = user["network"]
+
+    return friends
