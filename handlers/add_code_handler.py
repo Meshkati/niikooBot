@@ -6,6 +6,7 @@
 from telegram.ext import ConversationHandler, RegexHandler, MessageHandler, Filters
 from constants.button_messages import ButtonMessages as btm
 from constants.messages import BotMessages as bm
+import database.db_handler as db
 
 # Generating the states code
 ADD_CODE = range(1)
@@ -34,7 +35,7 @@ def add_code_entry(bot, update):
 # Gets the code from user and joins to the network
 def add_code(bot, update):
     user = update.message.from_user
-    code = update.message
+    code = update.message.text
     if join_to_network(user, code):
         update.message.reply_text(bm.enter_code_confirmed)
     else:
@@ -44,6 +45,8 @@ def add_code(bot, update):
 
 
 # Joins a user to the network of the other user
-def join_to_network(user_id, invite_code):
-    # TODO: Implement it later
+def join_to_network(user, invite_code):
+    result = db.add_code(user, invite_code)
+    if result is None:
+        return False
     return True
